@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>制造物流三区 - 物流南区部</title>
+    <title>制造物流三区 - 物流南区</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -408,6 +408,41 @@
             color: rgba(255,255,255,0.5);
             font-size: 0.85rem;
         }
+        /* 图片点击放大 */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;: rgba(0,0,0,0.9);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+        .lightbox-close:hover {
+            opacity: 1;
+        }
         @media (max-width: 768px) {
             .main-nav { display: none; }
             .hero-content h2 { font-size: 2rem; }
@@ -436,7 +471,7 @@
             <div class="logo">
                 <div class="logo-icon">⚡</div>
                 <div class="logo-text">
-                    <h1>物流南区部</h1>
+                    <h1>物流南区</h1>
                     <p>WOW启动展宏图 · LINK链动物流</p>
                 </div>
             </div>
@@ -503,42 +538,42 @@
                 <a href="#" class="more-link">查看更多 →</a>
             </div>
             <div class="gallery-grid">
-                <div class="gallery-item">
+                <div class="gallery-item" onclick="openLightbox('images/floor-plan.png')">
                     <img src="images/floor-plan.png" alt="南区平面图">
                     <div class="gallery-overlay">
                         <h4>南区平面图</h4>
                         <p>3区60JPH物流区域布局规划</p>
                     </div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" onclick="openLightbox('images/flow-line.png')">
                     <img src="images/flow-line.png" alt="物流动线">
                     <div class="gallery-overlay">
                         <h4>物流动线</h4>
                         <p>物流运输路线与作业流程规划</p>
                     </div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" onclick="openLightbox('images/welding-plan.png')">
                     <img src="images/welding-plan.png" alt="焊装物流平面图">
                     <div class="gallery-overlay">
                         <h4>焊装物流平面图</h4>
                         <p>焊装车间物流区域布局</p>
                     </div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" onclick="openLightbox('images/assembly-plan.png')">
                     <img src="images/assembly-plan.png" alt="总装物流平面图">
                     <div class="gallery-overlay">
                         <h4>总装物流平面图</h4>
                         <p>总装车间物流区域布局</p>
                     </div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" onclick="openLightbox('images/welding-flow.png')">
                     <img src="images/welding-flow.png" alt="焊装物流流量图">
                     <div class="gallery-overlay">
                         <h4>焊装物流流量图</h4>
                         <p>焊装车间物流流量分析</p>
                     </div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" onclick="openLightbox('images/assembly-flow.png')">
                     <img src="images/assembly-flow.png" alt="总装物流流量">
                     <div class="gallery-overlay">
                         <h4>总装物流流量</h4>
@@ -602,7 +637,7 @@
                     <div class="news-main-content">
                         <div class="date">2026年02月15日</div>
                         <h3>🏆 WOW项目正式启动</h3>
-                        <p>物流南区优化项目正式启动，团队全体成员参加启动仪式，标志着物流管理进入新征程。</p>
+                        <p>WOW物流优化项目正式启动，团队全体成员参加启动仪式，标志着物流管理进入新征程。</p>
                     </div>
                 </div>
                 <div class="news-list">
@@ -635,7 +670,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>物流南区部</h4>
+                    <h4>物流南区</h4>
                     <p>制造物流三区 | 3区60JPH运营管理</p>
                     <p>启动展宏图，链动物流新征程</p>
                     <p>构建高效、智能、绿色的物流体系</p>
@@ -649,15 +684,36 @@
                 </div>
                 <div class="footer-section">
                     <h4>联系我们</h4>
-                    <p>部门负责人：王鹏</p>
+                    <p>部门负责人：潘志飞</p>
                     <p>团队成员：870人</p>
                     <p>配送准时率：99.9%</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 物流南区部. All rights reserved. | 制造物流三区</p>
+                <p>&copy; 2026 物流南区. All rights reserved. | 制造物流三区</p>
             </div>
         </div>
     </footer>
+
+    <!-- 图片放大查看 -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img src="" alt="放大图片" id="lightbox-img">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
 </body>
 </html>
